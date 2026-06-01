@@ -42,8 +42,8 @@ nav{
   display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:700;
   color:var(--gold);background:var(--gold-dim)
 }
-.links{display:flex;gap:1.4rem;list-style:none}
-.links a{font-size:.88rem;color:var(--soft);transition:.25s}
+.links{display:flex;gap:1.15rem;list-style:none}
+.links a{font-size:.86rem;color:var(--soft);transition:.25s}
 .links a:hover{color:var(--gold)}
 
 .hero{min-height:100vh;display:grid;place-items:center;padding:8rem 6% 4rem;text-align:center;position:relative}
@@ -70,7 +70,7 @@ section{padding:6rem 6%}
 .wrap{max-width:1120px;margin:auto}
 .label{color:var(--gold);letter-spacing:.28em;font-size:.72rem;font-weight:900;margin-bottom:.8rem}
 .title{font-family:var(--fd);font-size:clamp(2rem,4vw,3.1rem);line-height:1.25;margin-bottom:.8rem}
-.sub{color:var(--muted);max-width:700px;margin-bottom:2.8rem}
+.sub{color:var(--muted);max-width:760px;margin-bottom:2.8rem}
 .grid2{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:start}
 .card{background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.018));border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow)}
 .text-card{padding:2rem}
@@ -107,9 +107,14 @@ section{padding:6rem 6%}
 .project-actions a{border:1px solid var(--border);border-radius:999px;padding:.45rem .9rem;color:var(--soft);background:rgba(255,255,255,.025);font-size:.78rem;transition:.25s}
 .project-actions a:hover{color:var(--gold);border-color:rgba(201,169,110,.35);transform:translateY(-2px)}
 
-.readme{direction:ltr;text-align:left;background:#11100d;border:1px solid var(--border);border-radius:var(--r);padding:1.4rem;overflow:auto;max-height:520px;color:#ddd;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.82rem;line-height:1.7;white-space:pre-wrap}
-.readme-title{direction:rtl;text-align:right;margin-bottom:1rem}
-.readme-title p{color:var(--muted)}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.photo-card{min-height:210px;padding:1.4rem;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
+.photo-card:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at top left,rgba(201,169,110,.14),transparent 55%)}
+.photo-card i,.photo-card h3,.photo-card p{position:relative}
+.photo-card i{font-size:1.5rem;color:var(--gold);margin-bottom:1rem}
+.photo-card h3{font-family:var(--fd);font-size:1.15rem}
+.photo-card p{font-size:.84rem;color:var(--muted);margin-top:.4rem}
+
 .contact{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center}
 .big{font-family:var(--fd);font-size:clamp(2.4rem,5vw,4.1rem);color:var(--gold);line-height:1.1}
 .contact p{color:var(--muted);margin:1rem 0 1.5rem}
@@ -117,8 +122,17 @@ section{padding:6rem 6%}
 .pill{border:1px solid var(--border);border-radius:999px;padding:.7rem 1.1rem;color:var(--soft);background:rgba(255,255,255,.025);transition:.25s}
 .pill:hover{color:var(--gold);border-color:rgba(201,169,110,.35);transform:translateY(-2px)}
 footer{text-align:center;padding:2rem 6%;color:var(--muted);border-top:1px solid var(--border)}
-@media(max-width:900px){.links{display:none}.grid2,.contact{grid-template-columns:1fr}.skills,.projects{grid-template-columns:1fr 1fr}}
-@media(max-width:620px){.skills,.projects{grid-template-columns:1fr}.hero{padding-top:7rem}.stat{width:100%}}
+
+@media(max-width:900px){
+  .links{display:none}
+  .grid2,.contact{grid-template-columns:1fr}
+  .skills,.projects,.gallery{grid-template-columns:1fr 1fr}
+}
+@media(max-width:620px){
+  .skills,.projects,.gallery{grid-template-columns:1fr}
+  .hero{padding-top:7rem}
+  .stat{width:100%}
+}
 </style>
 </head>
 <body>
@@ -129,20 +143,21 @@ footer{text-align:center;padding:2rem 6%;color:var(--muted);border-top:1px solid
     <li><a href="#skills">مهاراتي</a></li>
     <li><a href="#ai">AI</a></li>
     <li><a href="#projects">مشاريعي</a></li>
-    <li><a href="#readme">README</a></li>
+    <li><a href="#volunteering">تطوعي</a></li>
+    <li><a href="#photography">تصويري</a></li>
     <li><a href="#contact">كلمني</a></li>
   </ul>
 </nav>
 
 <section class="hero">
   <div class="hero-inner">
-    <div class="badge"><span class="dot"></span> متاح للفرص اللي لها جو</div>
+    <div class="badge"><span class="dot"></span> Computer Science & Artificial Intelligence</div>
     <h1>أسفرت وأنورت</h1>
     <div class="type"><span class="cursor" id="type"></span></div>
-    <p class="lead">أنا أنس — طالب <strong>Computer Science with Artificial Intelligence</strong>. بس لا تتوقعني بس أكتب أكواد وأسوي روبوتات. أنا أفكر كيف الشي ينشاف، ينفهم، وينحس.</p>
+    <p class="lead">أنا أنس — طالب <strong>Computer Science with Artificial Intelligence</strong>. ما أقدّم نفسي كمبرمج بس؛ أحب أبني أشياء تجمع بين الذكاء الاصطناعي، الكود، التصوير، والتسويق بطريقة لها شخصية.</p>
     <div class="cta">
-      <a href="#projects" class="btn primary"><i class="fa-solid fa-rocket"></i> شوف شغلي</a>
-      <a href="#readme" class="btn secondary"><i class="fa-brands fa-github"></i> شوف README</a>
+      <a href="#projects" class="btn primary"><i class="fa-solid fa-rocket"></i> شوف مشاريعي</a>
+      <a href="#volunteering" class="btn secondary"><i class="fa-solid fa-hand-holding-heart"></i> شوف تطوعي</a>
     </div>
     <div class="stats">
       <div class="stat"><b>AI</b><span>تخصصي الأساسي</span></div>
@@ -152,7 +167,7 @@ footer{text-align:center;padding:2rem 6%;color:var(--muted);border-top:1px solid
   </div>
 </section>
 
-<div class="quote">"أنت هنا مو داخل موقع… أنت داخل عقل شخص."</div>
+<div class="quote">"أنت هنا مو داخل موقع… أنت تتعرف على طريقة تفكيري."</div>
 
 <section id="about">
   <div class="wrap grid2">
@@ -167,7 +182,7 @@ footer{text-align:center;padding:2rem 6%;color:var(--muted);border-top:1px solid
       <div class="card mini"><div class="ico"><i class="fa-solid fa-brain"></i></div><div><strong>AI mindset</strong><p>أفكر كيف الشي يصير أذكى، مو بس شغال.</p></div></div>
       <div class="card mini"><div class="ico"><i class="fa-solid fa-camera-retro"></i></div><div><strong>عين تصوير</strong><p>أفهم اللقطة، الإضاءة، والإحساس.</p></div></div>
       <div class="card mini"><div class="ico"><i class="fa-solid fa-bullhorn"></i></div><div><strong>عقلية تسويق</strong><p>وش يشد؟ وش يخلي الناس تكمل؟</p></div></div>
-      <div class="card mini"><div class="ico"><i class="fa-solid fa-wand-magic-sparkles"></i></div><div><strong>شخصية</strong><p>أحب الأشياء اللي لها vibe واضح.</p></div></div>
+      <div class="card mini"><div class="ico"><i class="fa-solid fa-wand-magic-sparkles"></i></div><div><strong>شخصية</strong><p>أحب الأشياء اللي لها هوية واضحة.</p></div></div>
     </div>
   </div>
 </section>
@@ -180,8 +195,8 @@ footer{text-align:center;padding:2rem 6%;color:var(--muted);border-top:1px solid
     <div class="skills">
       <div class="card skill"><i class="fa-solid fa-robot"></i><h3>Artificial Intelligence</h3><p>أفكر في حلول أذكى، توصية، وفهم للمستخدم.</p></div>
       <div class="card skill"><i class="fa-brands fa-python"></i><h3>Python</h3><p>أستخدمه للتجارب، التحليل، والمنطق الذكي.</p></div>
+      <div class="card skill"><i class="fa-brands fa-java"></i><h3>Java / OOP</h3><p>أفهم بناء الأنظمة وتنظيم الكلاسات والمنطق.</p></div>
       <div class="card skill"><i class="fa-brands fa-js"></i><h3>JavaScript</h3><p>أخلي الصفحة تتحرك وتحس إنها عايشة.</p></div>
-      <div class="card skill"><i class="fa-solid fa-pen-ruler"></i><h3>UI / UX</h3><p>الشكل مهم، بس التجربة أهم.</p></div>
       <div class="card skill"><i class="fa-solid fa-camera"></i><h3>Photography</h3><p>التكوين والتفاصيل والإحساس البصري.</p></div>
       <div class="card skill"><i class="fa-solid fa-chart-line"></i><h3>Marketing Thinking</h3><p>أفكر: هل الفكرة تنفهم؟ هل تعلق بالبال؟</p></div>
     </div>
@@ -210,51 +225,54 @@ footer{text-align:center;padding:2rem 6%;color:var(--muted);border-top:1px solid
 <section id="projects">
   <div class="wrap">
     <div class="label">٠٤ مشاريعي</div>
-    <h2 class="title">وش طلّعت من راسي</h2>
-    <p class="sub">هنا أمثلة لكيف أبغى أقدم نفسي: AI، كود، وتسويق بصري في نفس المكان.</p>
+    <h2 class="title">مشاريعي الحقيقية</h2>
+    <p class="sub">مو كل مشاريعي مواقع. بعضها أنظمة، بعضها أفكار AI، وبعضها مشاريع تسويق ومجتمع. المهم عندي إن كل مشروع يوضح طريقة تفكيري.</p>
     <div class="projects">
       <div class="card project">
         <div class="mock"><div><i class="fa-solid fa-ticket fa-2x"></i><br>Movie Ticket Booking System</div></div>
         <div class="project-body">
           <h3>Movie Ticket Booking System</h3>
-          <p>نظام حجز تذاكر أفلام مبني بـ Java، يوضح فهمي للـ OOP وتنظيم الكلاسات وبناء منطق نظام كامل.</p>
-          <div class="tags"><span>Java</span><span>OOP</span><span>NetBeans</span><span>JAR</span></div>
+          <p>نظام حجز تذاكر أفلام مبني بـ Java. يوضح فهمي للـ OOP وتنظيم الكلاسات وبناء منطق نظام كامل مثل المستخدمين، الأفلام، العروض، والحجوزات.</p>
+          <div class="tags"><span>Java</span><span>OOP</span><span>NetBeans</span><span>System Design</span></div>
           <div class="project-actions">
             <a href="https://github.com/YOUR_USERNAME/movie-ticket-booking-system" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
             <a href="https://github.com/YOUR_USERNAME/movie-ticket-booking-system#readme" target="_blank"><i class="fa-solid fa-book-open"></i> README</a>
           </div>
         </div>
       </div>
-      <div class="card project">
-        <div class="mock"><div><i class="fa-solid fa-graduation-cap fa-2x"></i><br>Taylor Cognitive Advisor</div></div>
-        <div class="project-body">
-          <h3>Taylor Cognitive Advisor</h3>
-          <p>فكرة AI تساعد الطلاب بالإرشاد والاقتراحات بطريقة أقرب للمستخدم وأكثر فهمًا لاحتياجه.</p>
-          <div class="tags"><span>AI</span><span>Python</span><span>UX</span></div>
-          <div class="project-actions">
-            <a href="https://github.com/YOUR_USERNAME/taylor-cognitive-advisor" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
-            <a href="#" target="_blank"><i class="fa-solid fa-file-lines"></i> Report</a>
-          </div>
-        </div>
-      </div>
+
       <div class="card project">
         <div class="mock"><div><i class="fa-solid fa-store fa-2x"></i><br>Taibeeeen</div></div>
         <div class="project-body">
           <h3>Taibeeeen</h3>
-          <p>مشروع فيه تسويق، هوية، ومحتوى يخدم الطلاب بطريقة قريبة، ويعكس اهتمامي بالمجتمع والانطباع.</p>
-          <div class="tags"><span>Branding</span><span>Marketing</span><span>Content</span></div>
+          <p>مشروع طلابي ومجتمعي يخدم الطلاب، وفيه جانب قوي من التسويق، بناء الهوية، صناعة المحتوى، وفهم الجمهور المستهدف.</p>
+          <div class="tags"><span>Marketing</span><span>Branding</span><span>Community</span><span>Content</span></div>
           <div class="project-actions">
             <a href="#" target="_blank"><i class="fa-solid fa-eye"></i> Preview</a>
             <a href="#" target="_blank"><i class="fa-solid fa-book"></i> Case Study</a>
           </div>
         </div>
       </div>
+
       <div class="card project">
-        <div class="mock"><div><i class="fa-solid fa-code fa-2x"></i><br>أسفرت وأنورت</div></div>
+        <div class="mock"><div><i class="fa-solid fa-brain fa-2x"></i><br>AI Student Ideas</div></div>
         <div class="project-body">
-          <h3>Personal Portfolio</h3>
-          <p>مو مجرد صفحة تعريفية؛ مساحة فيها شخصية وAI identity وvisual storytelling.</p>
-          <div class="tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
+          <h3>AI & Student Experience</h3>
+          <p>اهتمامي في مشاريع AI يتركز على كيف التقنية تساعد الطلاب أو المستخدمين بشكل أذكى، سواء من خلال التوصيات، تنظيم المعلومات، أو تحسين التجربة.</p>
+          <div class="tags"><span>AI</span><span>Python</span><span>UX Thinking</span><span>Data</span></div>
+          <div class="project-actions">
+            <a href="#" target="_blank"><i class="fa-brands fa-github"></i> Code soon</a>
+            <a href="#" target="_blank"><i class="fa-solid fa-file-lines"></i> Report soon</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card project">
+        <div class="mock"><div><i class="fa-solid fa-code fa-2x"></i><br>Personal Portfolio</div></div>
+        <div class="project-body">
+          <h3>أسفرت وأنورت</h3>
+          <p>هذا الموقع نفسه مشروع يعكس هويتي: AI، كود، تصوير، تسويق، وشخصية. مو مجرد صفحة تعريفية، بل طريقة أعرض فيها نفسي بأسلوب مختلف.</p>
+          <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Personal Brand</span></div>
           <div class="project-actions">
             <a href="https://github.com/YOUR_USERNAME/anas-portfolio" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
             <a href="#" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Website</a>
@@ -265,83 +283,84 @@ footer{text-align:center;padding:2rem 6%;color:var(--muted);border-top:1px solid
   </div>
 </section>
 
-<section id="readme">
+<section id="volunteering">
   <div class="wrap">
-    <div class="readme-title">
-      <div class="label">٠٥ README</div>
-      <h2 class="title">شكل الريبو في GitHub</h2>
-      <p>هذا النص اللي تحطه في README.md عشان الريبو نفسه يطلع بشخصيتك.</p>
+    <div class="label">٠٥ تطوعي</div>
+    <h2 class="title">أشياء سويتها برا الكود</h2>
+    <p class="sub">التطوع علمني أشياء ما تنكتب بسهولة في الكود: الصبر، التواصل، فهم الناس، والشغل بروح الفريق.</p>
+
+    <div class="projects">
+      <div class="card project">
+        <div class="mock"><div><i class="fa-solid fa-house-chimney fa-2x"></i><br>EPIC Collective</div></div>
+        <div class="project-body">
+          <h3>Building Homes</h3>
+          <p>تطوعت في بناء منزل لعائلة من السكان الأصليين في ماليزيا. تجربة خلتني أفهم معنى العمل الجماعي لما يكون له أثر مباشر على حياة الناس.</p>
+          <div class="tags"><span>Teamwork</span><span>Community</span><span>Malaysia</span></div>
+        </div>
+      </div>
+
+      <div class="card project">
+        <div class="mock"><div><i class="fa-solid fa-children fa-2x"></i><br>Refugee Support</div></div>
+        <div class="project-body">
+          <h3>Refugee Community Support</h3>
+          <p>شاركت في دعم أطفال لاجئين من خلال مساعدتهم في الدراسة والتفاعل معهم، بالإضافة إلى التواصل مع كبار السن وخلق مساحة مريحة لهم.</p>
+          <div class="tags"><span>Education</span><span>Support</span><span>Communication</span></div>
+        </div>
+      </div>
+
+      <div class="card project">
+        <div class="mock"><div><i class="fa-solid fa-seedling fa-2x"></i><br>Environment</div></div>
+        <div class="project-body">
+          <h3>Environmental Cleanup</h3>
+          <p>شاركت في مبادرات تنظيف بيئية، وهذا النوع من التطوع يذكرني إن التأثير مو لازم يكون كبير من البداية؛ أحيانًا يبدأ بخطوة بسيطة.</p>
+          <div class="tags"><span>Environment</span><span>Responsibility</span><span>Action</span></div>
+        </div>
+      </div>
+
+      <div class="card project">
+        <div class="mock"><div><i class="fa-solid fa-chalkboard-user fa-2x"></i><br>Teaching Support</div></div>
+        <div class="project-body">
+          <h3>Teaching & English Support</h3>
+          <p>شاركت في تعليم ومساعدة طلاب وأطفال في التعلم، وهذا ساعدني أطور طريقة شرحي وتواصلي مع ناس مختلفين.</p>
+          <div class="tags"><span>Teaching</span><span>English</span><span>Mentoring</span></div>
+        </div>
+      </div>
     </div>
-    <pre class="readme"># أسفرت وأنورت 🌒✨
+  </div>
+</section>
 
-دخلت؟
-طيب، خلني أعرفك عليّ شوي.
+<section id="photography">
+  <div class="wrap">
+    <div class="label">٠٦ تصويري</div>
+    <h2 class="title">التصوير علمني أشوف التفاصيل</h2>
+    <p class="sub">التصوير بالنسبة لي مو مجرد صور. هو طريقة أتعلم منها التكوين، الإضاءة، المزاج، وكيف التفاصيل الصغيرة تغير إحساس الشيء كامل.</p>
 
-أنا ما سويت موقع وبس،
-أنا سويت مساحة تقرّبك من طريقة تفكيري.
-
-أنا مو بس أكتب كود،
-ومو بس أسوي أشياء تقنية زي ما ممكن البعض يتوقع.
-
-أنا أهتم كيف الشيء يطلع،
-كيف ينفهم،
-وكيف ينحس.
-
----
-
-## 🧠 وش الفكرة؟
-
-بنيت هالموقع عشان:
-
-- أوريك شوي من طريقتي في التفكير
-- كيف أدمج بين الكود، الإحساس، والتفاصيل
-- كيف الصفحة تكون تجربة مو مجرد محتوى ينقري ويمشي
-
-إذا دخلت هنا،
-فأنت مو بس تتصفح،
-أنت داخل جو.
-
----
-
-## 👨‍💻 من أنا؟
-
-أنا أنس،
-طالب Computer Science with Artificial Intelligence.
-
-الذكاء الاصطناعي شدني لأنه مو مجرد تقنية،
-شدني لأنه يحاول يفهم، يتوقع، ويتعلم.
-
-لكن بنفس الوقت، ما عمري كنت شخص تقني فقط.
-
-أحب التصوير، التصميم، التسويق،
-وأحب الأشياء اللي لها شخصية واضحة.
-
----
-
-## 🤝 لو بتعرفني من شغلي
-
-بتعرف إني ما أمشي على مبدأ:
-"يشتغل؟ خلاص ممتاز."
-
-لا.
-
-أنا يهمني كيف يطلع، كيف يوصل،
-وكيف يخلي اللي قدامه يحس إنه متعوب عليه.
-
-أحب التفاصيل.
-وأميل للأفكار اللي لها شخصية،
-مو الأشياء المستنسخة اللي تشبه بعضها.
-
-> أحب أبني أشياء لها روح.</pre>
+    <div class="gallery">
+      <div class="card photo-card">
+        <i class="fa-solid fa-camera-retro"></i>
+        <h3>Composition</h3>
+        <p>أهتم بتوازن الصورة وكيف العين تتحرك داخل اللقطة.</p>
+      </div>
+      <div class="card photo-card">
+        <i class="fa-solid fa-sun"></i>
+        <h3>Light & Mood</h3>
+        <p>الإضاءة بالنسبة لي هي اللي تعطي الصورة شخصيتها.</p>
+      </div>
+      <div class="card photo-card">
+        <i class="fa-solid fa-eye"></i>
+        <h3>Visual Storytelling</h3>
+        <p>أحب الصورة اللي تقول شيء بدون كلام كثير.</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <section id="contact">
   <div class="wrap contact">
     <div>
-      <div class="label">٠٦ تواصل</div>
+      <div class="label">٠٧ تواصل</div>
       <div class="big">تعال كلمني</div>
-      <p>لو عندك فكرة، تعاون، مشروع، أو حتى حسّيت إن عندنا نفس الجو — حيّاك.</p>
+      <p>لو عندك فكرة، تعاون، مشروع، أو حتى حسّيت إن عندنا نفس الاهتمام — حيّاك.</p>
       <div class="pills">
         <a class="pill" href="https://github.com/YOUR_USERNAME" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
         <a class="pill" href="https://linkedin.com/in/YOUR_USERNAME" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
@@ -350,14 +369,19 @@ footer{text-align:center;padding:2rem 6%;color:var(--muted);border-top:1px solid
       </div>
     </div>
     <div class="card text-card">
-      <p>ملاحظة: بدّل YOUR_USERNAME و YOUR_EMAIL وروابط المشاريع قبل ما ترفعه على GitHub. وخلي الصور الحقيقية للتصوير بعدين تعطي الموقع قوة أكثر.</p>
+      <p>بدّل YOUR_USERNAME و YOUR_EMAIL بروابطك الحقيقية. وبعدها ارفع هذا الملف على GitHub مكان index.html القديم.</p>
     </div>
   </div>
 </section>
 
 <footer>صُنع بذوق، فضول، وكثير من القهوة ☕</footer>
 <script>
-const phrases=['AI + كود + ذوق + تسويق','مو بس أكتب أكواد وأسوي روبوتات','أحب أبني أشياء لها روح','التفاصيل الصغيرة تصنع الفرق'];
+const phrases=[
+  'Artificial Intelligence • Technology • Creativity',
+  'مو بس أكتب أكواد وأسوي روبوتات',
+  'أحب أبني أشياء لها روح',
+  'التفاصيل الصغيرة تصنع الفرق'
+];
 let p=0,c=0,d=false;
 const el=document.getElementById('type');
 function type(){
