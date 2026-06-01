@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>أسفرت وأنورت | Anas</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@500;700&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{
+  --bg:#0d0c0a;--surface:#161410;--surface2:#1f1c17;--ink:#f3efe7;--soft:#bdb4a3;--muted:#756c5f;
+  --gold:#c9a96e;--gold2:#e7d3aa;--gold-dim:rgba(201,169,110,.12);--border:rgba(255,255,255,.075);
+  --shadow:0 24px 70px rgba(0,0,0,.48);--r:20px;--fb:'Tajawal',sans-serif;--fd:'Noto Naskh Arabic',serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--fb);line-height:1.85;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+body:before{
+  content:"";position:fixed;inset:0;
+  background:
+    radial-gradient(circle at 15% 10%,rgba(201,169,110,.13),transparent 28%),
+    radial-gradient(circle at 85% 70%,rgba(201,169,110,.09),transparent 30%),
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:auto,auto,64px 64px,64px 64px;
+  pointer-events:none;z-index:-2
+}
+body:after{
+  content:"";position:fixed;inset:0;
+  background:linear-gradient(to bottom,rgba(13,12,10,.1),#0d0c0a 92%);
+  pointer-events:none;z-index:-1
+}
+nav{
+  position:fixed;top:0;right:0;left:0;z-index:20;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1rem 6%;background:rgba(13,12,10,.72);
+  backdrop-filter:blur(18px);border-bottom:1px solid var(--border)
+}
+.logo{
+  width:46px;height:46px;border:1px solid rgba(201,169,110,.25);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:700;
+  color:var(--gold);background:var(--gold-dim)
+}
+.links{display:flex;gap:1.4rem;list-style:none}
+.links a{font-size:.88rem;color:var(--soft);transition:.25s}
+.links a:hover{color:var(--gold)}
+
+.hero{min-height:100vh;display:grid;place-items:center;padding:8rem 6% 4rem;text-align:center;position:relative}
+.hero-inner{max-width:980px}
+.badge{display:inline-flex;gap:.55rem;align-items:center;background:var(--gold-dim);border:1px solid rgba(201,169,110,.18);color:var(--gold2);border-radius:999px;padding:.45rem 1.1rem;font-size:.82rem;margin-bottom:1.6rem}
+.dot{width:7px;height:7px;background:var(--gold);border-radius:50%;box-shadow:0 0 0 7px rgba(201,169,110,.08)}
+h1{font-family:var(--fd);font-size:clamp(3.1rem,9vw,7rem);line-height:1.05;background:linear-gradient(135deg,#fff8ee 30%,var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:1rem}
+.type{color:var(--gold);font-size:clamp(1rem,2.5vw,1.35rem);margin-bottom:1.6rem}
+.cursor{border-left:2px solid var(--gold);padding-left:.35rem;animation:blink .8s infinite}
+@keyframes blink{50%{border-color:transparent}}
+.lead{max-width:760px;margin:0 auto 2rem;color:var(--soft);font-size:1.06rem}
+.lead strong{color:var(--gold2);font-weight:700}
+.cta{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:2rem}
+.btn{display:inline-flex;gap:.55rem;align-items:center;border-radius:999px;padding:.9rem 1.7rem;font-weight:700;transition:.3s}
+.primary{background:var(--gold);color:#100f0c}
+.secondary{border:1px solid rgba(201,169,110,.22);color:var(--soft);background:rgba(255,255,255,.025)}
+.btn:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(0,0,0,.35)}
+.stats{display:flex;justify-content:center;gap:1.2rem;flex-wrap:wrap;margin-top:3rem}
+.stat{background:rgba(255,255,255,.035);border:1px solid var(--border);border-radius:18px;padding:1rem 1.4rem;min-width:145px}
+.stat b{display:block;color:var(--gold);font-family:var(--fd);font-size:1.65rem}
+.stat span{font-size:.78rem;color:var(--muted)}
+
+section{padding:6rem 6%}
+.wrap{max-width:1120px;margin:auto}
+.label{color:var(--gold);letter-spacing:.28em;font-size:.72rem;font-weight:900;margin-bottom:.8rem}
+.title{font-family:var(--fd);font-size:clamp(2rem,4vw,3.1rem);line-height:1.25;margin-bottom:.8rem}
+.sub{color:var(--muted);max-width:700px;margin-bottom:2.8rem}
+.grid2{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:start}
+.card{background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.018));border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow)}
+.text-card{padding:2rem}
+.text-card p{color:var(--soft);font-size:1.02rem}
+.mini-list{display:grid;gap:1rem}
+.mini{padding:1.2rem 1.3rem;display:flex;gap:1rem;align-items:center;transition:.3s}
+.mini:hover{transform:translateX(-6px);border-color:rgba(201,169,110,.28)}
+.ico{width:45px;height:45px;min-width:45px;border-radius:14px;background:var(--gold-dim);color:var(--gold);display:grid;place-items:center}
+.mini strong{font-size:.84rem;color:var(--muted);display:block}
+.mini p{font-size:.94rem;color:var(--soft)}
+
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.skill{padding:1.5rem;min-height:175px;transition:.3s;position:relative;overflow:hidden}
+.skill:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at top right,rgba(201,169,110,.12),transparent 50%);opacity:0;transition:.3s}
+.skill:hover{transform:translateY(-7px);border-color:rgba(201,169,110,.22)}
+.skill:hover:before{opacity:1}
+.skill i{color:var(--gold);font-size:1.35rem;margin-bottom:1rem}
+.skill h3{font-size:1rem;margin-bottom:.35rem}
+.skill p{font-size:.84rem;color:var(--muted);position:relative}
+
+.quote{padding:2rem 6%;text-align:center;color:var(--muted);font-family:var(--fd);font-style:italic;border-block:1px solid var(--border);background:rgba(255,255,255,.018)}
+
+.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.project{overflow:hidden}
+.mock{height:190px;background:linear-gradient(135deg,var(--surface2),var(--surface));display:grid;place-items:center;text-align:center;color:var(--gold);font-family:var(--fd);position:relative}
+.mock:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 20%,rgba(201,169,110,.15),transparent 45%)}
+.mock div{position:relative}
+.project-body{padding:1.35rem}
+.project h3{font-family:var(--fd);font-size:1.15rem}
+.project p{font-size:.84rem;color:var(--muted);margin:.55rem 0 1rem}
+.tags{display:flex;gap:.4rem;flex-wrap:wrap}
+.tags span{font-size:.7rem;border:1px solid var(--border);border-radius:999px;padding:.2rem .65rem;color:var(--soft);background:rgba(255,255,255,.025)}
+.project-actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem}
+.project-actions a{border:1px solid var(--border);border-radius:999px;padding:.45rem .9rem;color:var(--soft);background:rgba(255,255,255,.025);font-size:.78rem;transition:.25s}
+.project-actions a:hover{color:var(--gold);border-color:rgba(201,169,110,.35);transform:translateY(-2px)}
+
+.readme{direction:ltr;text-align:left;background:#11100d;border:1px solid var(--border);border-radius:var(--r);padding:1.4rem;overflow:auto;max-height:520px;color:#ddd;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.82rem;line-height:1.7;white-space:pre-wrap}
+.readme-title{direction:rtl;text-align:right;margin-bottom:1rem}
+.readme-title p{color:var(--muted)}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center}
+.big{font-family:var(--fd);font-size:clamp(2.4rem,5vw,4.1rem);color:var(--gold);line-height:1.1}
+.contact p{color:var(--muted);margin:1rem 0 1.5rem}
+.pills{display:flex;gap:.7rem;flex-wrap:wrap}
+.pill{border:1px solid var(--border);border-radius:999px;padding:.7rem 1.1rem;color:var(--soft);background:rgba(255,255,255,.025);transition:.25s}
+.pill:hover{color:var(--gold);border-color:rgba(201,169,110,.35);transform:translateY(-2px)}
+footer{text-align:center;padding:2rem 6%;color:var(--muted);border-top:1px solid var(--border)}
+@media(max-width:900px){.links{display:none}.grid2,.contact{grid-template-columns:1fr}.skills,.projects{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.skills,.projects{grid-template-columns:1fr}.hero{padding-top:7rem}.stat{width:100%}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">أ</div>
+  <ul class="links">
+    <li><a href="#about">عني</a></li>
+    <li><a href="#skills">مهاراتي</a></li>
+    <li><a href="#ai">AI</a></li>
+    <li><a href="#projects">مشاريعي</a></li>
+    <li><a href="#readme">README</a></li>
+    <li><a href="#contact">كلمني</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="badge"><span class="dot"></span> متاح للفرص اللي لها جو</div>
+    <h1>أسفرت وأنورت</h1>
+    <div class="type"><span class="cursor" id="type"></span></div>
+    <p class="lead">أنا أنس — طالب <strong>Computer Science with Artificial Intelligence</strong>. بس لا تتوقعني بس أكتب أكواد وأسوي روبوتات. أنا أفكر كيف الشي ينشاف، ينفهم، وينحس.</p>
+    <div class="cta">
+      <a href="#projects" class="btn primary"><i class="fa-solid fa-rocket"></i> شوف شغلي</a>
+      <a href="#readme" class="btn secondary"><i class="fa-brands fa-github"></i> شوف README</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>AI</b><span>تخصصي الأساسي</span></div>
+      <div class="stat"><b>Visual</b><span>تصوير وتصميم</span></div>
+      <div class="stat"><b>Marketing</b><span>أفهم الانتباه</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="quote">"أنت هنا مو داخل موقع… أنت داخل عقل شخص."</div>
+
+<section id="about">
+  <div class="wrap grid2">
+    <div>
+      <div class="label">٠١ عني</div>
+      <h2 class="title">أنا مو بس كود</h2>
+      <div class="card text-card">
+        <p>أنا ما سويت موقع وبس، سويت مساحة تقرّبك من طريقة تفكيري. أدرس AI، وأحب التقنية اللي تفهم الناس وتخدمهم بدون ما تعقد عليهم الدنيا. وبنفس الوقت، عندي عين على التصوير، التسويق، والتفاصيل اللي تخلي الشيء له روح.</p>
+      </div>
+    </div>
+    <div class="mini-list">
+      <div class="card mini"><div class="ico"><i class="fa-solid fa-brain"></i></div><div><strong>AI mindset</strong><p>أفكر كيف الشي يصير أذكى، مو بس شغال.</p></div></div>
+      <div class="card mini"><div class="ico"><i class="fa-solid fa-camera-retro"></i></div><div><strong>عين تصوير</strong><p>أفهم اللقطة، الإضاءة، والإحساس.</p></div></div>
+      <div class="card mini"><div class="ico"><i class="fa-solid fa-bullhorn"></i></div><div><strong>عقلية تسويق</strong><p>وش يشد؟ وش يخلي الناس تكمل؟</p></div></div>
+      <div class="card mini"><div class="ico"><i class="fa-solid fa-wand-magic-sparkles"></i></div><div><strong>شخصية</strong><p>أحب الأشياء اللي لها vibe واضح.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="label">٠٢ مهاراتي</div>
+    <h2 class="title">وش أعرف أسوي</h2>
+    <p class="sub">المهارات هنا مو مجرد كلمات… هذي أجزاء من طريقة تفكيري.</p>
+    <div class="skills">
+      <div class="card skill"><i class="fa-solid fa-robot"></i><h3>Artificial Intelligence</h3><p>أفكر في حلول أذكى، توصية، وفهم للمستخدم.</p></div>
+      <div class="card skill"><i class="fa-brands fa-python"></i><h3>Python</h3><p>أستخدمه للتجارب، التحليل، والمنطق الذكي.</p></div>
+      <div class="card skill"><i class="fa-brands fa-js"></i><h3>JavaScript</h3><p>أخلي الصفحة تتحرك وتحس إنها عايشة.</p></div>
+      <div class="card skill"><i class="fa-solid fa-pen-ruler"></i><h3>UI / UX</h3><p>الشكل مهم، بس التجربة أهم.</p></div>
+      <div class="card skill"><i class="fa-solid fa-camera"></i><h3>Photography</h3><p>التكوين والتفاصيل والإحساس البصري.</p></div>
+      <div class="card skill"><i class="fa-solid fa-chart-line"></i><h3>Marketing Thinking</h3><p>أفكر: هل الفكرة تنفهم؟ هل تعلق بالبال؟</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="quote">"الـ AI بالنسبة لي مو ترند… هو طريقة أبني فيها شيء أذكى وأقرب للناس."</div>
+
+<section id="ai">
+  <div class="wrap grid2">
+    <div>
+      <div class="label">٠٣ الذكاء الاصطناعي</div>
+      <h2 class="title">وين يدخل AI فيني؟</h2>
+      <div class="card text-card">
+        <p>تخصصي Computer Science with Artificial Intelligence. أكثر شيء يشدني هو كيف التقنية تقدر تفهم الناس، تتوقع احتياجهم، وترتب تجربتهم بشكل أذكى. ما أحب AI اللي يحسسك إنك داخل مختبر، أحب الذكاء اللي يخدمك بهدوء.</p>
+      </div>
+    </div>
+    <div class="mini-list">
+      <div class="card mini"><div class="ico"><i class="fa-solid fa-user-gear"></i></div><div><strong>User-Centered AI</strong><p>ذكاء يخدم المستخدم بدون تعقيد.</p></div></div>
+      <div class="card mini"><div class="ico"><i class="fa-solid fa-chart-column"></i></div><div><strong>Data Thinking</strong><p>أفهم الأنماط قبل ما أبني الحل.</p></div></div>
+      <div class="card mini"><div class="ico"><i class="fa-solid fa-layer-group"></i></div><div><strong>Creative Tech</strong><p>تقنية + هوية + تجربة.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="label">٠٤ مشاريعي</div>
+    <h2 class="title">وش طلّعت من راسي</h2>
+    <p class="sub">هنا أمثلة لكيف أبغى أقدم نفسي: AI، كود، وتسويق بصري في نفس المكان.</p>
+    <div class="projects">
+      <div class="card project">
+        <div class="mock"><div><i class="fa-solid fa-ticket fa-2x"></i><br>Movie Ticket Booking System</div></div>
+        <div class="project-body">
+          <h3>Movie Ticket Booking System</h3>
+          <p>نظام حجز تذاكر أفلام مبني بـ Java، يوضح فهمي للـ OOP وتنظيم الكلاسات وبناء منطق نظام كامل.</p>
+          <div class="tags"><span>Java</span><span>OOP</span><span>NetBeans</span><span>JAR</span></div>
+          <div class="project-actions">
+            <a href="https://github.com/YOUR_USERNAME/movie-ticket-booking-system" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
+            <a href="https://github.com/YOUR_USERNAME/movie-ticket-booking-system#readme" target="_blank"><i class="fa-solid fa-book-open"></i> README</a>
+          </div>
+        </div>
+      </div>
+      <div class="card project">
+        <div class="mock"><div><i class="fa-solid fa-graduation-cap fa-2x"></i><br>Taylor Cognitive Advisor</div></div>
+        <div class="project-body">
+          <h3>Taylor Cognitive Advisor</h3>
+          <p>فكرة AI تساعد الطلاب بالإرشاد والاقتراحات بطريقة أقرب للمستخدم وأكثر فهمًا لاحتياجه.</p>
+          <div class="tags"><span>AI</span><span>Python</span><span>UX</span></div>
+          <div class="project-actions">
+            <a href="https://github.com/YOUR_USERNAME/taylor-cognitive-advisor" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
+            <a href="#" target="_blank"><i class="fa-solid fa-file-lines"></i> Report</a>
+          </div>
+        </div>
+      </div>
+      <div class="card project">
+        <div class="mock"><div><i class="fa-solid fa-store fa-2x"></i><br>Taibeeeen</div></div>
+        <div class="project-body">
+          <h3>Taibeeeen</h3>
+          <p>مشروع فيه تسويق، هوية، ومحتوى يخدم الطلاب بطريقة قريبة، ويعكس اهتمامي بالمجتمع والانطباع.</p>
+          <div class="tags"><span>Branding</span><span>Marketing</span><span>Content</span></div>
+          <div class="project-actions">
+            <a href="#" target="_blank"><i class="fa-solid fa-eye"></i> Preview</a>
+            <a href="#" target="_blank"><i class="fa-solid fa-book"></i> Case Study</a>
+          </div>
+        </div>
+      </div>
+      <div class="card project">
+        <div class="mock"><div><i class="fa-solid fa-code fa-2x"></i><br>أسفرت وأنورت</div></div>
+        <div class="project-body">
+          <h3>Personal Portfolio</h3>
+          <p>مو مجرد صفحة تعريفية؛ مساحة فيها شخصية وAI identity وvisual storytelling.</p>
+          <div class="tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
+          <div class="project-actions">
+            <a href="https://github.com/YOUR_USERNAME/anas-portfolio" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
+            <a href="#" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Website</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="readme">
+  <div class="wrap">
+    <div class="readme-title">
+      <div class="label">٠٥ README</div>
+      <h2 class="title">شكل الريبو في GitHub</h2>
+      <p>هذا النص اللي تحطه في README.md عشان الريبو نفسه يطلع بشخصيتك.</p>
+    </div>
+    <pre class="readme"># أسفرت وأنورت 🌒✨
+
+دخلت؟
+طيب، خلني أعرفك عليّ شوي.
+
+أنا ما سويت موقع وبس،
+أنا سويت مساحة تقرّبك من طريقة تفكيري.
+
+أنا مو بس أكتب كود،
+ومو بس أسوي أشياء تقنية زي ما ممكن البعض يتوقع.
+
+أنا أهتم كيف الشيء يطلع،
+كيف ينفهم،
+وكيف ينحس.
+
+---
+
+## 🧠 وش الفكرة؟
+
+بنيت هالموقع عشان:
+
+- أوريك شوي من طريقتي في التفكير
+- كيف أدمج بين الكود، الإحساس، والتفاصيل
+- كيف الصفحة تكون تجربة مو مجرد محتوى ينقري ويمشي
+
+إذا دخلت هنا،
+فأنت مو بس تتصفح،
+أنت داخل جو.
+
+---
+
+## 👨‍💻 من أنا؟
+
+أنا أنس،
+طالب Computer Science with Artificial Intelligence.
+
+الذكاء الاصطناعي شدني لأنه مو مجرد تقنية،
+شدني لأنه يحاول يفهم، يتوقع، ويتعلم.
+
+لكن بنفس الوقت، ما عمري كنت شخص تقني فقط.
+
+أحب التصوير، التصميم، التسويق،
+وأحب الأشياء اللي لها شخصية واضحة.
+
+---
+
+## 🤝 لو بتعرفني من شغلي
+
+بتعرف إني ما أمشي على مبدأ:
+"يشتغل؟ خلاص ممتاز."
+
+لا.
+
+أنا يهمني كيف يطلع، كيف يوصل،
+وكيف يخلي اللي قدامه يحس إنه متعوب عليه.
+
+أحب التفاصيل.
+وأميل للأفكار اللي لها شخصية،
+مو الأشياء المستنسخة اللي تشبه بعضها.
+
+> أحب أبني أشياء لها روح.</pre>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact">
+    <div>
+      <div class="label">٠٦ تواصل</div>
+      <div class="big">تعال كلمني</div>
+      <p>لو عندك فكرة، تعاون، مشروع، أو حتى حسّيت إن عندنا نفس الجو — حيّاك.</p>
+      <div class="pills">
+        <a class="pill" href="https://github.com/YOUR_USERNAME" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+        <a class="pill" href="https://linkedin.com/in/YOUR_USERNAME" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        <a class="pill" href="mailto:YOUR_EMAIL@gmail.com"><i class="fa-regular fa-envelope"></i> Email</a>
+        <a class="pill" href="https://instagram.com/YOUR_USERNAME" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a>
+      </div>
+    </div>
+    <div class="card text-card">
+      <p>ملاحظة: بدّل YOUR_USERNAME و YOUR_EMAIL وروابط المشاريع قبل ما ترفعه على GitHub. وخلي الصور الحقيقية للتصوير بعدين تعطي الموقع قوة أكثر.</p>
+    </div>
+  </div>
+</section>
+
+<footer>صُنع بذوق، فضول، وكثير من القهوة ☕</footer>
+<script>
+const phrases=['AI + كود + ذوق + تسويق','مو بس أكتب أكواد وأسوي روبوتات','أحب أبني أشياء لها روح','التفاصيل الصغيرة تصنع الفرق'];
+let p=0,c=0,d=false;
+const el=document.getElementById('type');
+function type(){
+  const t=phrases[p];
+  if(!d){
+    el.textContent=t.slice(0,++c);
+    if(c===t.length){d=true;setTimeout(type,1500);return}
+  }else{
+    el.textContent=t.slice(0,--c);
+    if(c===0){d=false;p=(p+1)%phrases.length}
+  }
+  setTimeout(type,d?38:80)
+}
+type();
+</script>
+</body>
+</html>
