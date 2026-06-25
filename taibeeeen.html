@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Taibeeeen | Anas</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+  --bg:#070806;
+  --panel:#11130f;
+  --panel2:#171913;
+  --ink:#f3efe7;
+  --soft:#bdb4a3;
+  --muted:#756c5f;
+  --gold:#c9a96e;
+  --line:rgba(255,255,255,.1);
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:Tajawal,Arial,sans-serif;
+  line-height:1.8;
+  overflow-x:hidden;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+.back{
+  position:fixed;
+  top:22px;
+  left:5%;
+  z-index:50;
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:10px 16px;
+  background:#070806cc;
+  color:var(--gold);
+  backdrop-filter:blur(14px);
+  font-weight:800;
+  transition:.3s;
+}
+
+.back:hover{
+  transform:scale(1.06);
+  box-shadow:0 0 25px rgba(201,169,110,.22);
+  border-color:var(--gold);
+}
+
+.hero{
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:7% 5%;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 20%,rgba(201,169,110,.13),transparent 36%),
+    radial-gradient(circle at 20% 80%,rgba(255,255,255,.04),transparent 30%),
+    #070806;
+}
+
+.hero:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px);
+  background-size:90px 90px;
+  mask-image:linear-gradient(to bottom,transparent,#000 20%,#000 80%,transparent);
+  opacity:.5;
+}
+
+.hero-inner{
+  position:relative;
+  z-index:2;
+  max-width:1100px;
+}
+
+.label{
+  color:var(--gold);
+  letter-spacing:.24em;
+  font-size:12px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+
+h1{
+  font-size:clamp(60px,13vw,160px);
+  line-height:.85;
+  letter-spacing:-.08em;
+  margin:20px 0;
+  text-transform:uppercase;
+}
+
+.hero p{
+  max-width:760px;
+  margin:auto;
+  color:var(--soft);
+  font-size:20px;
+}
+
+.tags{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:28px;
+}
+
+.tag{
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:8px 14px;
+  color:var(--soft);
+  background:rgba(255,255,255,.035);
+  transition:.3s;
+}
+
+.tag:hover{
+  color:var(--gold);
+  border-color:var(--gold);
+  transform:scale(1.06);
+  box-shadow:0 0 22px rgba(201,169,110,.18);
+}
+
+.wrap{
+  max-width:1150px;
+  margin:auto;
+  padding:95px 5%;
+}
+
+.split{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:34px;
+  align-items:center;
+}
+
+.title{
+  font-size:clamp(42px,7vw,86px);
+  line-height:.9;
+  letter-spacing:-.06em;
+  margin:12px 0;
+}
+
+.text{
+  color:var(--soft);
+  font-size:18px;
+}
+
+.card{
+  border:1px solid var(--line);
+  background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));
+  border-radius:28px;
+  padding:30px;
+  transition:.35s ease;
+}
+
+.card:hover{
+  transform:translateY(-8px) scale(1.01);
+  border-color:rgba(201,169,110,.5);
+  box-shadow:0 28px 70px rgba(0,0,0,.35);
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+
+.shot{
+  height:430px;
+  border-radius:26px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:#111;
+  position:relative;
+  transition:.35s ease;
+}
+
+.shot:hover{
+  transform:translateY(-8px) scale(1.015);
+  border-color:rgba(201,169,110,.55);
+  box-shadow:0 25px 70px rgba(0,0,0,.35);
+}
+
+.shot img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:.7s;
+}
+
+.shot:hover img{
+  transform:scale(1.06);
+}
+
+.shot span{
+  position:absolute;
+  left:14px;
+  right:14px;
+  bottom:14px;
+  background:#070806cc;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:12px;
+  color:var(--gold);
+  font-weight:800;
+  backdrop-filter:blur(10px);
+}
+
+.metrics{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.metric b{
+  display:block;
+  font-size:44px;
+  color:var(--gold);
+  line-height:1;
+}
+
+.metric span{
+  color:var(--soft);
+}
+
+.skills{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+.skill{
+  position:relative;
+  padding:22px;
+  border-radius:22px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.04);
+  overflow:hidden;
+  cursor:pointer;
+  transition:
+    transform .35s ease,
+    border-color .35s ease,
+    box-shadow .35s ease;
+}
+
+.skill:before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  background:radial-gradient(circle at var(--x,50%) var(--y,50%),rgba(201,169,110,.32),transparent 38%);
+  opacity:0;
+  transition:.35s;
+}
+
+.skill:hover{
+  transform:translateY(-10px) scale(1.03);
+  border-color:rgba(201,169,110,.7);
+  box-shadow:
+    0 0 35px rgba(201,169,110,.18),
+    0 25px 70px rgba(0,0,0,.45);
+}
+
+.skill:hover:before{
+  opacity:1;
+}
+
+.skill i,
+.skill b,
+.skill span{
+  position:relative;
+  z-index:1;
+}
+
+.skill i{
+  color:var(--gold);
+  font-size:24px;
+  margin-bottom:12px;
+  transition:.35s;
+}
+
+.skill:hover i{
+  transform:scale(1.18) rotate(-4deg);
+  text-shadow:0 0 18px rgba(201,169,110,.55);
+}
+
+.skill b{
+  display:block;
+}
+
+.skill span{
+  color:var(--muted);
+  font-size:14px;
+}
+
+.digital-growth{
+  border:1px solid rgba(201,169,110,.22);
+  background:
+    radial-gradient(circle at 10% 10%,rgba(201,169,110,.12),transparent 35%),
+    linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));
+  border-radius:34px;
+  padding:40px;
+}
+
+.digital-growth .numbers{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+  margin-top:26px;
+}
+
+.digital-growth .number{
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:24px;
+  background:rgba(255,255,255,.035);
+}
+
+.digital-growth .number b{
+  display:block;
+  font-size:46px;
+  color:var(--gold);
+  line-height:1;
+}
+
+.whatsapp{
+  text-align:center;
+  border:1px solid rgba(201,169,110,.25);
+  border-radius:34px;
+  padding:55px 30px;
+  background:
+    radial-gradient(circle at center,rgba(201,169,110,.12),transparent 45%),
+    var(--panel);
+}
+
+.whatsapp a{
+  display:inline-flex;
+  gap:10px;
+  align-items:center;
+  margin-top:20px;
+  background:var(--gold);
+  color:#120f0a;
+  border-radius:999px;
+  padding:14px 22px;
+  font-weight:900;
+  transition:.3s ease;
+}
+
+.whatsapp a:hover{
+  transform:scale(1.07);
+  box-shadow:0 0 30px rgba(201,169,110,.35);
+}
+
+.reveal{
+  opacity:0;
+  transform:translateY(70px);
+  transition:.9s ease;
+}
+
+.reveal.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+footer{
+  text-align:center;
+  color:var(--muted);
+  padding:40px;
+  border-top:1px solid var(--line);
+}
+
+@media(max-width:850px){
+  .split,
+  .gallery,
+  .metrics,
+  .skills,
+  .digital-growth .numbers{
+    grid-template-columns:1fr;
+  }
+
+  .shot{
+    height:520px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<a class="back" href="index.html">← Back to Portfolio</a>
+
+<header class="hero">
+  <div class="hero-inner reveal">
+    <div class="label">Student Support & Digital Marketing Case Study</div>
+
+    <h1>Taibeeeen</h1>
+
+    <p>
+      A student-led initiative focused on supporting international students through community, guidance, social media communication, and practical information about studying in Malaysia.
+    </p>
+
+    <div class="tags">
+      <span class="tag">Co-Founder</span>
+      <span class="tag">Marketing Manager</span>
+      <span class="tag">Social Media Strategy</span>
+      <span class="tag">Student Support</span>
+    </div>
+  </div>
+</header>
+
+<section class="wrap split reveal">
+  <div>
+    <div class="label">01 / Overview</div>
+    <h2 class="title">Built around a real student need.</h2>
+  </div>
+
+  <div class="card text">
+    Taibeeeen was created to help students who are planning to study in Malaysia by making the process easier to understand. The initiative focused on universities, English centres, student life, accommodation, and general guidance from a real student perspective.
+  </div>
+</section>
+
+<section class="wrap split reveal">
+  <div class="card text">
+    My role focused on marketing direction, content planning, audience engagement, social media communication, and positioning the initiative in a way that attracted student attention before launch.
+  </div>
+
+  <div>
+    <div class="label">02 / My Role</div>
+    <h2 class="title">Co-Founder & Marketing Manager.</h2>
+  </div>
+</section>
+<section class="wrap reveal">
+  <div class="label">03 / Campaign Direction</div>
+  <h2 class="title">Curiosity before explanation.</h2>
+  <p class="text">
+    Instead of revealing everything immediately, the campaign used teaser stories, countdown content, and audience questions to create curiosity around the initiative before the official launch.
+  </p>
+</section>
+
+<section class="wrap reveal">
+  <div class="gallery">
+    <div class="shot">
+      <img src="taibeeeen-story.jpg" alt="Taibeeeen curiosity story">
+      <span>Curiosity Story</span>
+    </div>
+
+    <div class="shot">
+      <img src="taibeeeen-countdown.jpg" alt="Taibeeeen countdown campaign">
+      <span>Countdown Campaign</span>
+    </div>
+
+    <div class="shot">
+      <img src="taibeeeen-taylors.jpg" alt="Taibeeeen audience reach">
+      <span>Audience Reach</span>
+    </div>
+
+    <div class="shot">
+      <img src="taibeeeen-join.jpg" alt="Taibeeeen community call">
+      <span>Community Call</span>
+    </div>
+  </div>
+</section>
+
+<section class="wrap reveal">
+  <div class="metrics">
+    <div class="card metric">
+      <b>3K+</b>
+      <span>early Taibeeeen campaign insights in the first 12 hours</span>
+    </div>
+
+    <div class="card metric">
+      <b>12h</b>
+      <span>curiosity-driven engagement before official posting</span>
+    </div>
+
+    <div class="card metric">
+      <b>4</b>
+      <span>main campaign assets used for launch communication</span>
+    </div>
+  </div>
+</section>
+
+<section class="wrap reveal">
+  <div class="label">04 / Professional Skills</div>
+  <h2 class="title">Skills demonstrated.</h2>
+
+  <div class="skills">
+    <div class="skill">
+      <i class="fa-solid fa-bullhorn"></i>
+      <b>Marketing Strategy</b>
+      <span>Campaign planning and positioning.</span>
+    </div>
+
+    <div class="skill">
+      <i class="fa-solid fa-share-nodes"></i>
+      <b>Social Media Management</b>
+      <span>Managing content and audience communication.</span>
+    </div>
+
+    <div class="skill">
+      <i class="fa-solid fa-video"></i>
+      <b>Video Marketing</b>
+      <span>Short-form content thinking.</span>
+    </div>
+
+    <div class="skill">
+      <i class="fa-solid fa-brain"></i>
+      <b>Audience Psychology</b>
+      <span>Using curiosity and timing.</span>
+    </div>
+
+    <div class="skill">
+      <i class="fa-solid fa-users"></i>
+      <b>Community Building</b>
+      <span>Supporting student engagement.</span>
+    </div>
+
+    <div class="skill">
+      <i class="fa-solid fa-person-rays"></i>
+      <b>Leadership</b>
+      <span>Taking responsibility and direction.</span>
+    </div>
+
+    <div class="skill">
+      <i class="fa-solid fa-comments"></i>
+      <b>Communication</b>
+      <span>Explaining clearly and professionally.</span>
+    </div>
+
+    <div class="skill">
+      <i class="fa-solid fa-gauge-high"></i>
+      <b>Pressure Handling</b>
+      <span>Working through fast campaign needs.</span>
+    </div>
+  </div>
+</section>
+
+<section class="wrap split reveal">
+  <div>
+    <div class="label">05 / Personal Digital Growth</div>
+    <h2 class="title">Beyond Taibeeeen.</h2>
+  </div>
+
+  <div class="digital-growth text">
+    Outside of Taibeeeen, I also manage my own TikTok accounts. This personal experience helped me understand short-form content, retention, audience behaviour, video marketing, and social media growth.
+
+    <div class="numbers">
+      <div class="number">
+        <b>40K+</b>
+        <span>followers across personal TikTok accounts</span>
+      </div>
+
+      <div class="number">
+        <b>2M+</b>
+        <span>monthly views experience</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap reveal">
+  <div class="whatsapp">
+    <div class="label">Studying in Malaysia?</div>
+
+    <h2 class="title">Need guidance?</h2>
+
+    <p class="text">
+      If you are planning to study in Malaysia, looking for information about universities, English centres, student life, accommodation, or want to hear a real student experience, feel free to reach out.
+    </p>
+
+    <a href="https://wa.me/601139600317" target="_blank">
+      <i class="fa-brands fa-whatsapp"></i>
+      Message me on WhatsApp
+    </a>
+  </div>
+</section>
+
+<footer>
+  Taibeeeen Experience • Anas
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach((entry)=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+},{threshold:.15});
+
+document.querySelectorAll('.reveal').forEach((el)=>{
+  observer.observe(el);
+});
+
+document.querySelectorAll('.skill').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty('--x',(e.clientX - rect.left) + 'px');
+    card.style.setProperty('--y',(e.clientY - rect.top) + 'px');
+  });
+});
+</script>
+
+</body>
+</html>
