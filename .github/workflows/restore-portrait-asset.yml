@@ -1,0 +1,37 @@
+name: Restore portrait asset
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/restore-portrait-asset.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Restore portrait into main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mkdir -p assets
+          git show adccc30fa36c22f9b9b3d10b96598d416791eb3a:assets/anas-digital-portrait.webp > assets/anas-digital-portrait.webp
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('assets/portrait-hero.css')
+          css=p.read_text(encoding='utf-8')
+          old="https://raw.githubusercontent.com/Anoosy99/anas-portfolio/adccc30fa36c22f9b9b3d10b96598d416791eb3a/assets/anas-digital-portrait.webp"
+          css=css.replace(old,'./anas-digital-portrait.webp')
+          p.write_text(css,encoding='utf-8')
+          PY
+          rm -f .github/workflows/restore-portrait-asset.yml
+          git add assets/anas-digital-portrait.webp assets/portrait-hero.css .github/workflows/restore-portrait-asset.yml
+          git commit -m "Restore portrait asset to main"
+          git push
