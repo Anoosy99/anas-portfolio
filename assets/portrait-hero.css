@@ -73,7 +73,7 @@ html[dir="rtl"] .hero .hero-translation{
 .portrait-background{
   width:min(100%,620px);
   height:clamp(560px,68vh,760px);
-  background-image:url('https://raw.githubusercontent.com/Anoosy99/anas-portfolio/adccc30fa36c22f9b9b3d10b96598d416791eb3a/assets/anas-digital-portrait.webp');
+  background-image:url('./anas-digital-portrait.webp');
   background-repeat:no-repeat;
   background-size:contain;
   background-position:center bottom;
