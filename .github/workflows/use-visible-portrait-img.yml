@@ -81,3 +81,5 @@ jobs:
           git add index.html assets/portrait-hero.css .github/workflows/use-visible-portrait-img.yml
           git commit -m "Show portrait clearly without visual-search overlay"
           git push
+
+# trigger
