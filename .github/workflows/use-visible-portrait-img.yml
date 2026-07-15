@@ -3,8 +3,6 @@ name: Apply visible portrait image
 on:
   push:
     branches: [main]
-    paths:
-      - '.github/workflows/use-visible-portrait-img.yml'
 
 permissions:
   contents: write
@@ -28,7 +26,7 @@ jobs:
           old = '<div class="portrait-background"></div>'
           new = '''<img
                 class="portrait-image"
-                src="./assets/anas-digital-portrait.webp?v=20260715-4"
+                src="./assets/anas-digital-portrait.webp?v=20260715-5"
                 alt=""
                 aria-hidden="true"
                 draggable="false"
@@ -39,24 +37,29 @@ jobs:
 
           if old not in html and 'class="portrait-image"' not in html:
               raise SystemExit('Portrait container was not found')
-
           if old in html:
               html = html.replace(old, new, 1)
-
+          html = html.replace('portrait-hero.css?v=20260715-3','portrait-hero.css?v=20260715-5')
           index.write_text(html, encoding='utf-8')
 
           css_path = Path('assets/portrait-hero.css')
           css = css_path.read_text(encoding='utf-8')
-          css += '''
+          marker = '/* FINAL VISIBLE PORTRAIT */'
+          if marker not in css:
+              css += '''
 
-/* Visible portrait image — pointer interaction and browser visual search are disabled. */
+/* FINAL VISIBLE PORTRAIT */
 .portrait-background{display:none!important}
 .portrait-image{
-  display:block;
+  display:block!important;
+  position:relative;
+  z-index:3;
   width:min(100%,620px);
   height:clamp(560px,68vh,760px);
   object-fit:contain;
   object-position:center bottom;
+  opacity:1!important;
+  visibility:visible!important;
   filter:drop-shadow(0 22px 45px rgba(0,0,0,.62));
   pointer-events:none!important;
   user-select:none!important;
@@ -78,8 +81,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           rm -f .github/workflows/use-visible-portrait-img.yml
-          git add index.html assets/portrait-hero.css .github/workflows/use-visible-portrait-img.yml
+          rm -f .portrait-trigger
+          git add index.html assets/portrait-hero.css .github/workflows/use-visible-portrait-img.yml .portrait-trigger
           git commit -m "Show portrait clearly without visual-search overlay"
           git push
-
-# trigger
