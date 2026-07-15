@@ -1,0 +1,45 @@
+name: Apply portrait hero
+on:
+  push:
+    paths:
+      - '.github/workflows/add-portrait.yml'
+permissions:
+  contents: write
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update hero layout
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text(encoding='utf-8')
+          old_css=".hero{min-height:92vh;display:grid;place-items:center;text-align:center}.hero h1"
+          new_css=".hero{min-height:92vh;display:grid;place-items:center}.hero-grid{width:min(1240px,100%);display:grid;grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);align-items:center;gap:1rem}.hero-copy{text-align:center}.hero-art{position:relative;min-height:650px;display:grid;align-items:end;justify-items:center;isolation:isolate}.hero-art:before{content:'';position:absolute;width:73%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(201,169,110,.72);box-shadow:0 0 55px rgba(201,169,110,.13);top:14%;z-index:-2}.hero-art:after{content:'';position:absolute;inset:25% 5% 3%;background:radial-gradient(circle,rgba(201,169,110,.2),transparent 62%);filter:blur(20px);z-index:-3}.hero-art img{width:min(100%,610px);max-height:720px;object-fit:contain;object-position:bottom;filter:drop-shadow(0 15px 45px rgba(0,0,0,.65));animation:portraitIn 1.2s .5s both}@keyframes portraitIn{from{opacity:0;transform:translateY(24px) scale(.97);filter:blur(8px)}to{opacity:1;transform:none;filter:drop-shadow(0 15px 45px rgba(0,0,0,.65))}}.hero h1"
+          if old_css not in s:
+              raise SystemExit('Hero CSS marker not found')
+          s=s.replace(old_css,new_css,1)
+          old_mobile="@media(max-width:850px){.links{display:none}.grid2,.contact{grid-template-columns:1fr}.skills,.projects,.gallery{grid-template-columns:1fr 1fr}}"
+          new_mobile="@media(max-width:850px){.links{display:none}.grid2,.contact{grid-template-columns:1fr}.skills,.projects,.gallery{grid-template-columns:1fr 1fr}.hero-grid{grid-template-columns:1fr}.hero-art{min-height:480px;order:2}.hero-copy{order:1}.hero-art img{max-height:520px}}"
+          s=s.replace(old_mobile,new_mobile,1)
+          old='<section class="hero"><div><div class="badge">'
+          new='<section class="hero"><div class="hero-grid"><div class="hero-copy"><div class="badge">'
+          if old not in s:
+              raise SystemExit('Hero HTML marker not found')
+          s=s.replace(old,new,1)
+          old_end='</span></a></div></section>'
+          new_end='</span></a></div><div class="hero-art" aria-hidden="true"><img src="assets/anas-digital-portrait.svg" alt="Digital portrait of Anas"></div></div></section>'
+          if old_end not in s:
+              raise SystemExit('Hero end marker not found')
+          s=s.replace(old_end,new_end,1)
+          p.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Add digital portrait to responsive hero"
+          git push
