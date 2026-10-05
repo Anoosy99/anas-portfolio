@@ -223,6 +223,14 @@ footer{border-top:1px solid rgba(218,184,129,.13);padding:52px 24px;color:#ab977
 @media(max-width:540px){.hero h1{font-size:clamp(2.8rem,13vw,4.2rem)}.hero>div{padding:30px 15px}.grid>.text{padding:27px}.take{grid-template-columns:1fr 1fr}.take div{min-height:90px;font-size:.87rem}.back{left:4%;top:14px}.grid:nth-of-type(even){padding:10px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.hero h1,.hero p{animation:none}.grid>.card:has(img),.grid img,.take div,.back{transition:none!important}}
 
+
+/* Language switch (matches main site) */
+.lang-switch{position:fixed;right:1.25rem;bottom:1.25rem;z-index:1000;display:flex;gap:.2rem;padding:.22rem;border:1px solid rgba(201,169,110,.28);border-radius:999px;background:rgba(13,12,10,.86);backdrop-filter:blur(14px);box-shadow:0 8px 24px rgba(0,0,0,.28)}
+.lang-switch button{border:0;background:transparent;color:#8f8576;font:700 11px Arial,sans-serif;padding:6px 9px;border-radius:999px;cursor:pointer}
+.lang-switch button.active{background:rgba(201,169,110,.15);color:#c9a96e}
+html[dir=rtl] .back{left:auto;right:6%}
+html[dir=rtl] .label{letter-spacing:0}
+html[dir=rtl] body{font-family:Tahoma,Arial,sans-serif}
 </style>
 
 </head>
@@ -375,5 +383,49 @@ observer.observe(el);
 
 </script>
 
+<div class="lang-switch" aria-label="Language switcher"><button data-lang-btn="ar">AR</button><button data-lang-btn="en">EN</button></div>
+<script>
+(function(){
+const ar=[
+'→ رجوع للبورتفوليو',
+'EPIC HOMES ماليزيا',
+'بنيت بيت في ثلاث أيام.',
+'تجربة تطوعية عملية في قرية الأورانغ أصلي تشمبروه، في جندا بايك.',
+'٠١ نبني بيت',
+'من مواد خام إلى بيت حقيقي.',
+'في يوليو ٢٠٢٥، انضميت مع ٢٦ متطوع في قرية الأورانغ أصلي تشمبروه بجندا بايك، عشان نبني بيت لعائلة من الأورانغ أصلي. خلال ثلاث أيام حوّلنا المواد الخام لبيت كامل، شي بيغيّر يوم عائلة كاملة.',
+'٠٢ شغل الفريق والقيادة',
+'قادونا ناس يطلّعون أفضل ما فينا.',
+'بإشراف EPIC Homes والـ Master Builder ومختصين عندهم خبرة، فهمت المعنى الحقيقي للشغل الجماعي. كل متطوع كان له دور، والجو كان يشجّع على التعلّم والتعاون والتطوّر.',
+'٠٣ نبني بهدف',
+'كل قطرة عرق كان لها معنى.',
+'كنت ضمن فريق الجدران، واشتغلت مع باقي المتطوعين على تركيب أجزاء أساسية من هيكل البيت. رغم التعب والساعات الطويلة تحت الشمس، الالتزام اللي بيننا خلّى كل مجهود له قيمة.',
+'٠٤ نظرة تغيّرت',
+'الأثر يُقاس بالناس.',
+'أكثر لحظة علقت في بالي كانت لما سلّمنا البيت للعائلة وشفنا ردة فعلهم. الشغل جنب مجتمع الأورانغ أصلي غيّر فهمي للمجتمع، والامتنان، ووش اللي يهم فعلاً.',
+'أهم الدروس',
+'وش علّمتني هالتجربة',
+'القيادة بخدمة الناس',
+'الشغل الجماعي تحت الضغط',
+'المشاركة المجتمعية',
+'البناء بيدي',
+'أثر اجتماعي حقيقي',
+'EPIC Homes ماليزيا • نبني بيوت، ونبني مجتمعات'
+];
+const els=[document.querySelector('.back'),document.querySelector('.hero .label'),document.querySelector('.hero h1'),document.querySelector('.hero p'),...document.querySelectorAll('main .label, main h2, main p, .take div'),document.querySelector('footer')];
+const en=els.map(e=>e.textContent.trim().replace(/\s+/g,' '));
+function setLang(lang){
+  document.documentElement.lang=lang;
+  document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+  try{localStorage.setItem('siteLang',lang)}catch(e){}
+  els.forEach((e,i)=>{e.textContent=(lang==='ar'?ar:en)[i]});
+  document.querySelectorAll('[data-lang-btn]').forEach(b=>b.classList.toggle('active',b.dataset.langBtn===lang));
+}
+document.querySelectorAll('[data-lang-btn]').forEach(b=>b.onclick=()=>setLang(b.dataset.langBtn));
+let saved='ar';try{saved=localStorage.getItem('siteLang')||'ar'}catch(e){}
+if(els.length!==ar.length)console.warn('EPIC i18n: element count mismatch',els.length,ar.length);
+setLang(saved);
+})();
+</script>
 </body>
 </html>

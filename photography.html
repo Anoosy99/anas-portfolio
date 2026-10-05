@@ -7,17 +7,32 @@
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#06110c;--deep:#020604;--panel:#0b1c14;--panel2:#10281c;--ink:#f1eadb;--soft:#c6bda8;--muted:#7f8b78;--accent:#9bbf75;--line:rgba(210,230,190,.13)}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Tajawal,Arial,sans-serif;overflow-x:hidden}a{text-decoration:none;color:inherit}.grain{position:fixed;inset:0;pointer-events:none;z-index:10;background:radial-gradient(circle at 20% 8%,rgba(155,191,117,.13),transparent 28%),radial-gradient(circle at 90% 70%,rgba(155,191,117,.08),transparent 32%),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:auto,auto,86px 86px;mix-blend-mode:screen}.nav{position:fixed;top:0;left:0;right:0;z-index:30;display:flex;justify-content:space-between;align-items:center;padding:22px 5%;background:linear-gradient(to bottom,rgba(2,6,4,.88),rgba(2,6,4,.08));backdrop-filter:blur(8px)}.nav a{font-weight:900;letter-spacing:.12em;font-size:12px;color:var(--soft)}.nav a:hover,.back{color:var(--accent)}.hero{height:100vh;position:relative;display:grid;place-items:center;padding:5%;overflow:hidden;background:var(--deep)}.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 4%,rgba(6,17,12,.25)),url('photo-hero.jpg') center/cover;filter:contrast(1.04) brightness(.72) saturate(.92);transform:scale(1.08);animation:heroZoom 16s ease forwards}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(6,17,12,.85),transparent 42%,rgba(6,17,12,.45)),repeating-linear-gradient(90deg,rgba(255,255,255,.035) 0 1px,transparent 1px 90px);opacity:.75}.hero-content{position:relative;z-index:2;text-align:left;width:100%;max-width:1180px}.eyebrow{color:var(--accent);font-weight:900;letter-spacing:.34em;font-size:12px;text-transform:uppercase}.hero h1{font-size:clamp(64px,15vw,190px);line-height:.82;margin:18px 0 14px;text-transform:uppercase;letter-spacing:-.08em;max-width:900px}.hero p{max-width:620px;color:var(--soft);font-size:clamp(17px,2vw,22px);line-height:1.55;margin:0}.widget{position:absolute;left:5%;bottom:5%;z-index:4;width:min(355px,86vw);border:1px solid var(--line);background:rgba(6,17,12,.68);backdrop-filter:blur(18px);padding:18px;border-radius:20px;box-shadow:0 25px 80px rgba(0,0,0,.32)}.widget small{display:block;color:var(--accent);font-weight:900;letter-spacing:.18em;font-size:11px}.widget b{display:block;font-size:25px;margin:7px 0 2px}.widget span{color:var(--muted)}.switch{position:absolute;right:5%;bottom:5%;z-index:4;display:flex;gap:8px}.switch a{border:1px solid var(--line);background:rgba(6,17,12,.62);backdrop-filter:blur(18px);padding:14px 22px;border-radius:999px;font-weight:900;letter-spacing:.08em;color:var(--soft);transition:.35s}.switch a:hover{background:var(--accent);color:var(--deep);transform:translateY(-3px)}.wrap{max-width:1240px;margin:auto;padding:105px 5%}.intro{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:end}.intro h2,.section-head h2,.quote h2{font-size:clamp(42px,7.4vw,102px);line-height:.9;margin:0;letter-spacing:-.065em}.intro p{color:var(--soft);font-size:20px;line-height:1.75}.zones{display:grid;grid-template-columns:1fr 1fr;gap:22px}.zone{position:relative;min-height:520px;border:1px solid var(--line);border-radius:30px;overflow:hidden;display:flex;align-items:flex-end;padding:28px;background:var(--panel);transition:.5s cubic-bezier(.2,.8,.2,1)}.zone:before{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--deep),transparent 65%),var(--image);background-size:cover;background-position:center;transition:.9s cubic-bezier(.2,.8,.2,1);filter:saturate(.9) brightness(.78)}.zone:hover{transform:scale(1.025);border-color:rgba(155,191,117,.6)}.zone:hover:before{transform:scale(1.08)}.zone>*{position:relative}.zone h3{font-size:clamp(48px,7vw,86px);line-height:.86;margin:8px 0;letter-spacing:-.065em}.zone p{color:var(--soft);max-width:430px}.still{--image:url('moment-kl-night.jpg')}.motion{--image:url('coffee-pour.jpg')}.section-head{display:flex;justify-content:space-between;align-items:end;gap:22px;margin-bottom:28px}.section-head p{color:var(--muted);max-width:430px;font-size:18px;line-height:1.6}.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.shot{min-height:480px;border:1px solid var(--line);border-radius:28px;overflow:hidden;background:var(--panel);position:relative;padding:20px;display:flex;align-items:flex-end;transition:.55s cubic-bezier(.2,.8,.2,1)}.shot:before{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--deep),rgba(2,6,4,.1) 62%),var(--img);background-size:cover;background-position:center;filter:saturate(.92) brightness(.82);transition:.9s cubic-bezier(.2,.8,.2,1)}.shot:hover{transform:translateY(-10px) scale(1.015);border-color:rgba(155,191,117,.65);box-shadow:0 30px 80px rgba(0,0,0,.35)}.shot:hover:before{transform:scale(1.08)}.shot-info{position:relative;transform:translateY(8px);transition:.45s}.shot:hover .shot-info{transform:translateY(0)}.tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:5px 10px;color:var(--accent);font-size:11px;font-weight:900;letter-spacing:.14em;background:rgba(6,17,12,.48)}.shot h3{font-size:28px;margin:12px 0 4px;letter-spacing:-.03em}.shot p{margin:0;color:var(--soft);font-size:15px}.s1{--img:url('moment-kl-night.jpg')}.s2{--img:url('street-couple.jpg')}.s3{--img:url('beach-sunset.jpg')}.d1{--img:url('coffee-pour.jpg')}.d2{--img:url('matcha-detail.jpg')}.d3{--img:url('belong-coffee.jpg')}.p1{--img:url('barista-portrait.jpg')}.p2{--img:url('epic-volunteer.jpg')}.p3{--img:url('bali-beach.jpg')}.m1{--img:url('video-restaurant-cover.jpg')}.m2{--img:url('video-cafe-cover.jpg')}.m3{--img:url('video-reel-cover.jpg')}.quote{min-height:72vh;display:grid;place-items:center;text-align:center;padding:90px 5%;border-block:1px solid var(--line);background:radial-gradient(circle at center,rgba(155,191,117,.08),transparent 45%)}.quote p{max-width:760px;color:var(--muted);font-size:22px;line-height:1.7}.reveal{opacity:0;transform:translateY(90px) scale(.98);filter:blur(10px);transition:opacity 1s ease,transform 1s cubic-bezier(.2,.8,.2,1),filter 1s ease}.reveal.show{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}footer{padding:45px 5%;color:var(--muted);display:flex;justify-content:space-between;border-top:1px solid var(--line)}@keyframes heroZoom{to{transform:scale(1)}}@media(max-width:850px){.intro,.zones,.gallery{grid-template-columns:1fr}.switch{position:relative;right:auto;bottom:auto;margin-top:26px}.widget{position:relative;left:auto;bottom:auto;margin-top:24px}.hero{height:auto;min-height:100vh}.hero-content{padding-top:95px;text-align:left}.section-head{display:block}.shot{min-height:390px}footer{display:block}}
+
+/* Motion (videos) hidden for now: remove the motion-off class to bring it back */
+.motion-off{display:none!important}
+.zones:has(.motion-off){grid-template-columns:1fr}
+/* Language switch (matches main site) */
+.lang-switch{position:fixed;right:1.25rem;bottom:1.25rem;z-index:1000;display:flex;gap:.2rem;padding:.22rem;border:1px solid rgba(201,169,110,.28);border-radius:999px;background:rgba(13,12,10,.86);backdrop-filter:blur(14px);box-shadow:0 8px 24px rgba(0,0,0,.28)}
+.lang-switch button{border:0;background:transparent;color:#8f8576;font:700 11px Arial,sans-serif;padding:6px 9px;border-radius:999px;cursor:pointer}
+.lang-switch button.active{background:rgba(201,169,110,.15);color:#c9a96e}
+html[dir=rtl] .nav a,html[dir=rtl] .eyebrow,html[dir=rtl] .tag,html[dir=rtl] .switch a,html[dir=rtl] h1,html[dir=rtl] h2,html[dir=rtl] h3{letter-spacing:0}
+html[dir=rtl] body{font-family:Tahoma,Arial,sans-serif}
+html[dir=rtl] .hero-content{text-align:right}
+html[dir=rtl] .hero h1,html[dir=rtl] .hero p{margin-left:auto}
+html[dir=rtl] .switch{right:auto;left:5%}
+html[dir=rtl] .widget{left:auto;right:5%}
+@media(max-width:850px){html[dir=rtl] .hero-content{text-align:right}html[dir=rtl] .widget{right:auto}html[dir=rtl] .switch{left:auto}}
 </style>
 </head>
 <body>
 <div class="grain"></div>
-<nav class="nav"><a class="back" href="index.html">← BACK TO PORTFOLIO</a><a href="#moments">MOMENTS</a><a href="#details">DETAILS</a><a href="#motion">MOTION</a></nav>
+<nav class="nav"><a class="back" href="index.html">← BACK TO PORTFOLIO</a><a href="#moments">MOMENTS</a><a href="#details">DETAILS</a><a class="motion-off" href="#motion">MOTION</a></nav>
 <header class="hero">
   <div class="hero-content reveal">
     <div class="eyebrow">ANAS VISUAL WORLD</div>
     <h1>من منظوري</h1>
     <p>Photography was never about proving anything. It was always about the feeling of a moment, a frame, and a quiet way of seeing things.</p>
-    <div class="switch"><a href="#moments">STILL</a><a href="#motion">MOTION</a></div>
+    <div class="switch"><a href="#moments">STILL</a><a class="motion-off" href="#motion">MOTION</a></div>
   </div>
   <aside class="widget reveal"><small>NOW VIEWING</small><b>Feeling before perfection</b><span>Personal frames • quiet moments • visual stories</span></aside>
 </header>
@@ -28,7 +43,7 @@
 </section>
 <section class="wrap zones reveal">
   <a class="zone still" href="#moments"><div><div class="eyebrow">01</div><h3>Still Frames</h3><p>Scenes, people, and details that felt real without being forced.</p></div></a>
-  <a class="zone motion" href="#motion"><div><div class="eyebrow">02</div><h3>Motion Stories</h3><p>Café visuals, restaurant clips, and short moments with atmosphere.</p></div></a>
+  <a class="zone motion motion-off" href="#motion"><div><div class="eyebrow">02</div><h3>Motion Stories</h3><p>Café visuals, restaurant clips, and short moments with atmosphere.</p></div></a>
 </section>
 <section id="moments" class="wrap reveal">
   <div class="section-head"><h2>Moments</h2><p>Some moments last only a few seconds. I keep them because they felt honest, not because they were perfect.</p></div>
@@ -54,7 +69,7 @@
     <article class="shot p3"><div class="shot-info"><span class="tag">TRAVEL • BEACH</span><h3>Soft Distance</h3><p>Sometimes the subject is the feeling.</p></div></article>
   </div>
 </section>
-<section id="motion" class="wrap reveal">
+<section id="motion" class="wrap reveal motion-off">
   <div class="section-head"><h2>Motion</h2><p>I was never a vlogger or blogger. I just like capturing scenes when they can speak for themselves.</p></div>
   <div class="gallery">
     <article class="shot m1"><div class="shot-info"><span class="tag">VIDEO • RESTAURANT</span><h3>Restaurant Campaign</h3><p>Add your video cover here.</p></div></article>
@@ -66,9 +81,28 @@
   <div><h2>I do not capture photos.<br>I capture how I saw the moment.</h2><p>أنا ما أوثق الصورة بس، أنا أوثق كيف شفت اللحظة.</p></div>
 </section>
 </main>
-<footer><span>ANAS PERSPECTIVE</span><span>Still Frames • Motion Stories</span></footer>
+<footer><span>ANAS PERSPECTIVE</span><span>Still Frames</span></footer>
 <script>
 const observer=new IntersectionObserver((entries)=>{entries.forEach((entry)=>{if(entry.isIntersecting){entry.target.classList.add('show')}})},{threshold:.18});document.querySelectorAll('.reveal').forEach((el)=>observer.observe(el));
+</script>
+<div class="lang-switch" aria-label="Language switcher"><button data-lang-btn="ar">AR</button><button data-lang-btn="en">EN</button></div>
+<script>
+(function(){
+const ar=["→ رجوع للبورتفوليو", "لحظات", "تفاصيل", "حركة", "عالم أنس البصري", "التصوير ما كان يوم عشان أثبت شي. كان دايم عن إحساس لحظة، وكادر، وطريقة هادية أشوف فيها الأشياء.", "صور", "فيديو", "تشوف الحين", "الإحساس قبل الكمال", "لقطات شخصية • لحظات هادية • قصص بصرية", "مو محترف. بس شخصي.", "التصوير بالنسبة لي ما كان إثبات إني محترف. كان دائمًا إحساس لحظة، زاوية، وتفصيلة أشوفها بطريقتي.<br><br>عمري ما قلت لنفسي أو للناس إني مصوّر محترف، بس أحب أوري الناس منظوري وكيف أشوف الأشياء بطريقتي.", "لقطات ثابتة", "مشاهد وناس وتفاصيل كانت حقيقية بدون تصنّع.", "قصص متحركة", "لقطات كافيهات ومطاعم ولحظات قصيرة لها جو.", "لحظات", "فيه لحظات ما تطوّل إلا كم ثانية. أحتفظ فيها لأنها كانت صادقة، مو لأنها كانت مثالية.", "مدينة • ليل", "كوالالمبور وهي تتحرك", "ضبابية وأضواء ومدينة عمرها ما توقف.", "شارع • ناس", "وسط الزحمة", "لحظة هادية وسط شارع مزدحم.", "غروب • سفر", "نهاية هادية", "مشهد كان عنده كلامه الخاص.", "تفاصيل", "الأشياء الصغيرة هي اللي غالبًا تعلق فيني: الملمس، الحركة، الإضاءة، والتوقيت.", "كافيه • صب", "انسياب القهوة", "حركة صغيرة صنعت الكادر.", "تفصيلة • ملمس", "سطح الماتشا", "لون وفقاعات وانتباه للتفاصيل.", "براند • كافيه", "لحظة في Belong", "تفصيلة تجارية هادية.", "ناس", "التصوير ساعدني أبني علاقات، وثقة مع الناس، وثقة في قراراتي ونظرتي.", "بورتريه • كافيه", "طاقة الباريستا", "الناس يعطون الكادر روح.", "توثيق • EPIC", "أيادي تشتغل", "تعب حقيقي، وأثر حقيقي.", "سفر • بحر", "مسافة ناعمة", "أحيانًا الموضوع هو الإحساس نفسه.", "حركة", "عمري ما كنت فلوقر أو بلوقر. بس أحب أصوّر المشاهد لما تقدر تتكلم عن نفسها.", "فيديو • مطعم", "حملة مطعم", "قريبًا.", "فيديو • كافيه", "لقطة قهوة", "قريبًا.", "فيديو • ريل", "كادر متحرك", "قريبًا.", "أنا ما أوثق الصورة بس،<br>أنا أوثق كيف شفت اللحظة.", "I do not capture photos. I capture how I saw the moment.", "منظور أنس", "لقطات ثابتة"];
+const els=[...document.querySelectorAll('.nav a, .hero .eyebrow, .hero-content p, .switch a, .widget small, .widget b, .widget span, .intro h2, .intro p, .zone h3, .zone p, .section-head h2, .section-head p, .shot .tag, .shot h3, .shot p, .quote h2, .quote p, footer span')];
+const en=els.map(e=>e.innerHTML);
+if(els.length!==ar.length)console.warn('Photography i18n: element count mismatch',els.length,ar.length);
+function setLang(lang){
+  document.documentElement.lang=lang;
+  document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+  try{localStorage.setItem('siteLang',lang)}catch(e){}
+  els.forEach((e,i)=>{e.innerHTML=(lang==='ar'?ar:en)[i]});
+  document.querySelectorAll('[data-lang-btn]').forEach(b=>b.classList.toggle('active',b.dataset.langBtn===lang));
+}
+document.querySelectorAll('[data-lang-btn]').forEach(b=>b.onclick=()=>setLang(b.dataset.langBtn));
+let saved='ar';try{saved=localStorage.getItem('siteLang')||'ar'}catch(e){}
+setLang(saved);
+})();
 </script>
 </body>
 </html>
