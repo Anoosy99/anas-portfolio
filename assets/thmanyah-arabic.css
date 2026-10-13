@@ -1,0 +1,14 @@
+/* Thmanyah Arabic typography (local-only: font license forbids public font-file hosting). */
+@font-face{font-family:"Thmanyah Sans Local";src:local("Thmanyah Sans"),local("thmanyahsans-Regular");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Thmanyah Display Local";src:local("Thmanyah Serif Display"),local("thmanyahserifdisplay-Regular");font-weight:100 900;font-display:swap}
+html[lang="ar"],html[dir="rtl"]{--fb:"Thmanyah Sans Local",Tahoma,Arial,sans-serif;--fd:"Thmanyah Display Local","Thmanyah Sans Local",Tahoma,Arial,sans-serif}
+html[lang="ar"] body,html[dir="rtl"] body,
+html[lang="ar"] button,html[dir="rtl"] button,
+html[lang="ar"] input,html[dir="rtl"] input,
+html[lang="ar"] select,html[dir="rtl"] select,
+html[lang="ar"] textarea,html[dir="rtl"] textarea{
+font-family:"Thmanyah Sans Local",Tahoma,Arial,sans-serif}
+html[lang="ar"] :is(h1,h2,h3,h4,h5,h6,.title,.intro-title,.big,.quote),
+html[dir="rtl"] :is(h1,h2,h3,h4,h5,h6,.title,.intro-title,.big,.quote){
+font-family:"Thmanyah Display Local","Thmanyah Sans Local",Tahoma,Arial,sans-serif}
+html[lang="ar"] [lang="en"],html[dir="rtl"] [lang="en"]{font-family:Arial,Helvetica,sans-serif}
