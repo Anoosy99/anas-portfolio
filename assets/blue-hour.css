@@ -1,0 +1,32 @@
+/* Blue hour: the page starts at dusk and darkens into night as you scroll.
+   Stars (assets/night-sky.js) draw on a fixed canvas behind everything. Gold stays the accent. */
+:root{
+  --bg:#0b1424;--s:#101b2e;--s2:#16233a;
+  --ink:#eef3fa;--soft:#b9c6d8;--muted:#8d9cb3;--gold:#d4b47a;
+  --border:rgba(170,200,240,.13);
+  --sky:linear-gradient(180deg,#1f3756 0%,#172b47 12%,#11213a 28%,#0c182b 48%,#08111f 70%,#050a13 100%)}
+
+body{background:var(--sky)!important;background-color:#050a13!important;min-height:100vh}
+#night-sky{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+
+/* Solid surfaces that used warm black */
+nav{background:rgba(14,26,44,.72)!important;border-bottom-color:var(--border)!important}
+.lang-switch{background:rgba(10,19,34,.86)!important}
+.intro-overlay{background:radial-gradient(120% 80% at 50% 0%,#1f3756,#0b1424 60%,#050a13)!important}
+.modal{background:rgba(3,7,14,.8)!important}
+#volunteering .epic-card{background:linear-gradient(135deg,rgba(22,35,58,.92),rgba(14,24,41,.92))!important}
+
+/* Glass cards read as cool navy, not warm brown */
+.card{background:linear-gradient(145deg,rgba(150,185,235,.07),rgba(150,185,235,.02))!important;backdrop-filter:blur(2px)}
+
+/* Last light of sunset behind the portrait */
+.hero-art::before{background:radial-gradient(circle at 52% 45%,rgba(232,178,108,.26),rgba(212,180,122,.08) 38%,transparent 68%)!important}
+
+@media (prefers-reduced-transparency:reduce){.card{backdrop-filter:none}}
+
+/* Star portrait canvas sits exactly over the (hidden) photo */
+.hero-art{pointer-events:auto!important}
+.star-portrait{position:absolute;z-index:3;pointer-events:none}
+
+/* Phones: the hero copy inherited left-to-right from the grid, which put Arabic punctuation at the wrong end */
+@media(max-width:900px){html[dir="rtl"] .hero-copy{direction:rtl}}
