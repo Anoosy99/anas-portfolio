@@ -10,7 +10,7 @@
   canvas.setAttribute('aria-hidden', 'true');
   img.insertAdjacentElement('afterend', canvas);
   const ctx = canvas.getContext('2d');
-  let parts = [], box = null, t0 = 0, raf = 0, visible = true;
+  let parts = [], box = null, t0 = 0, raf = 0, visible = true, assembled = false, builtW = 0, builtH = 0;
   const pointer = { x: -1e4, y: -1e4 };
 
   const STAR = [214, 228, 255], WARM = [255, 238, 214], GOLD = [232, 189, 118];
@@ -20,6 +20,7 @@
     // layout size (ignores the photo's reveal transform), placed exactly over the photo
     const r = { width: img.offsetWidth, height: img.offsetHeight };
     if (!r.width || !img.naturalWidth) return;
+    builtW = r.width; builtH = r.height;
     Object.assign(canvas.style, { left: img.offsetLeft + 'px', top: img.offsetTop + 'px', width: r.width + 'px', height: r.height + 'px' });
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     canvas.width = Math.round(r.width * dpr); canvas.height = Math.round(r.height * dpr);
@@ -68,7 +69,9 @@
         vx: 0, vy: 0
       });
     }
-    t0 = performance.now();
+    // the gather animation plays once; later rebuilds (rotation) snap straight into place
+    t0 = assembled ? performance.now() - 1e5 : performance.now();
+    assembled = true;
   }
 
   const ease = t => 1 - Math.pow(1 - t, 3);
@@ -105,7 +108,15 @@
 
   img.style.setProperty('visibility', 'hidden', 'important');
   if (img.complete && img.naturalWidth) start(); else img.addEventListener('load', start, { once: true });
-  let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(start, 200); });
+  // Phones fire "resize" whenever the address bar slides in or out while scrolling.
+  // Only rebuild when the portrait itself changed size (e.g. rotating the phone).
+  let rt; window.addEventListener('resize', () => {
+    clearTimeout(rt);
+    rt = setTimeout(() => {
+      if (Math.abs(img.offsetWidth - builtW) < 2 && Math.abs(img.offsetHeight - builtH) < 2) return;
+      start();
+    }, 200);
+  });
   canvas.parentElement.addEventListener('pointermove', e => {
     const r = canvas.getBoundingClientRect(); pointer.x = e.clientX - r.left; pointer.y = e.clientY - r.top;
   });

@@ -7,7 +7,7 @@
   --sky:linear-gradient(180deg,#1f3756 0%,#172b47 12%,#11213a 28%,#0c182b 48%,#08111f 70%,#050a13 100%)}
 
 body{background:var(--sky)!important;background-color:#050a13!important;min-height:100vh}
-#night-sky{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+#night-sky{position:fixed;top:0;left:0;width:100%;height:100%;height:100lvh;z-index:-1;pointer-events:none}
 
 /* Solid surfaces that used warm black */
 nav:not([class]){background:rgba(14,26,44,.72)!important;border-bottom-color:var(--border)!important}

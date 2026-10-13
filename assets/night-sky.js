@@ -28,8 +28,11 @@
     }
   }
   function resize(){
+    // the canvas is 100lvh tall (CSS), so the phone's sliding address bar never changes its size
+    const nw = canvas.clientWidth || window.innerWidth, nh = canvas.clientHeight || window.innerHeight;
+    if (nw === w && nh === h) return;
     dpr = Math.min(window.devicePixelRatio || 1, 2);
-    w = window.innerWidth; h = window.innerHeight;
+    w = nw; h = nh;
     canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     draw(performance.now());
