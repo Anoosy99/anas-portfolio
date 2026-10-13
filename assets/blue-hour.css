@@ -10,7 +10,7 @@ body{background:var(--sky)!important;background-color:#050a13!important;min-heig
 #night-sky{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
 
 /* Solid surfaces that used warm black */
-nav{background:rgba(14,26,44,.72)!important;border-bottom-color:var(--border)!important}
+nav:not([class]){background:rgba(14,26,44,.72)!important;border-bottom-color:var(--border)!important}
 .lang-switch{background:rgba(10,19,34,.86)!important}
 .intro-overlay{background:radial-gradient(120% 80% at 50% 0%,#1f3756,#0b1424 60%,#050a13)!important}
 .modal{background:rgba(3,7,14,.8)!important}
@@ -30,3 +30,7 @@ nav{background:rgba(14,26,44,.72)!important;border-bottom-color:var(--border)!im
 
 /* Phones: the hero copy inherited left-to-right from the grid, which put Arabic punctuation at the wrong end */
 @media(max-width:900px){html[dir="rtl"] .hero-copy{direction:rtl}}
+
+/* Name next to the logo */
+.brand{display:flex;align-items:center;gap:.75rem}
+.brand-name{font-weight:700;font-size:.98rem;color:var(--ink);white-space:nowrap}
