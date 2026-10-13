@@ -1,14 +1,47 @@
-/* Thmanyah Arabic typography (local-only: font license forbids public font-file hosting). */
-@font-face{font-family:"Thmanyah Sans Local";src:local("Thmanyah Sans"),local("thmanyahsans-Regular");font-weight:100 900;font-display:swap}
-@font-face{font-family:"Thmanyah Display Local";src:local("Thmanyah Serif Display"),local("thmanyahserifdisplay-Regular");font-weight:100 900;font-display:swap}
-html[lang="ar"],html[dir="rtl"]{--fb:"Thmanyah Sans Local",Tahoma,Arial,sans-serif;--fd:"Thmanyah Display Local","Thmanyah Sans Local",Tahoma,Arial,sans-serif}
-html[lang="ar"] body,html[dir="rtl"] body,
-html[lang="ar"] button,html[dir="rtl"] button,
-html[lang="ar"] input,html[dir="rtl"] input,
-html[lang="ar"] select,html[dir="rtl"] select,
-html[lang="ar"] textarea,html[dir="rtl"] textarea{
-font-family:"Thmanyah Sans Local",Tahoma,Arial,sans-serif}
-html[lang="ar"] :is(h1,h2,h3,h4,h5,h6,.title,.intro-title,.big,.quote),
-html[dir="rtl"] :is(h1,h2,h3,h4,h5,h6,.title,.intro-title,.big,.quote){
-font-family:"Thmanyah Display Local","Thmanyah Sans Local",Tahoma,Arial,sans-serif}
-html[lang="ar"] [lang="en"],html[dir="rtl"] [lang="en"]{font-family:Arial,Helvetica,sans-serif}
+/* Arabic typography layer: applies whenever a page is in Arabic (html lang="ar").
+   Thmanyah files live in assets/fonts/thmanyah/, which is git-ignored because the license forbids
+   hosting them on a website without written permission (ask@thmanyah.com). Without the files the
+   site falls back to IBM Plex Sans Arabic (text) and Noto Naskh Arabic (headings). */
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;700&family=Noto+Naskh+Arabic:wght@500;700&display=swap");
+
+@font-face{font-family:"Thmanyah Sans";src:local("Thmanyah Sans Light"),url("fonts/thmanyah/thmanyahsans-Light.woff2") format("woff2");font-weight:300;font-display:swap}
+@font-face{font-family:"Thmanyah Sans";src:local("Thmanyah Sans"),local("thmanyahsans-Regular"),url("fonts/thmanyah/thmanyahsans-Regular.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Thmanyah Sans";src:local("Thmanyah Sans Medium"),url("fonts/thmanyah/thmanyahsans-Medium.woff2") format("woff2");font-weight:500 600;font-display:swap}
+@font-face{font-family:"Thmanyah Sans";src:local("Thmanyah Sans Bold"),url("fonts/thmanyah/thmanyahsans-Bold.woff2") format("woff2");font-weight:700 800;font-display:swap}
+@font-face{font-family:"Thmanyah Sans";src:local("Thmanyah Sans Black"),url("fonts/thmanyah/thmanyahsans-Black.woff2") format("woff2");font-weight:900;font-display:swap}
+@font-face{font-family:"Thmanyah Serif Display";src:local("Thmanyah Serif Display Light"),url("fonts/thmanyah/thmanyahserifdisplay-Light.woff2") format("woff2");font-weight:300;font-display:swap}
+@font-face{font-family:"Thmanyah Serif Display";src:local("Thmanyah Serif Display"),local("thmanyahserifdisplay-Regular"),url("fonts/thmanyah/thmanyahserifdisplay-Regular.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Thmanyah Serif Display";src:local("Thmanyah Serif Display Medium"),url("fonts/thmanyah/thmanyahserifdisplay-Medium.woff2") format("woff2");font-weight:500 600;font-display:swap}
+@font-face{font-family:"Thmanyah Serif Display";src:local("Thmanyah Serif Display Bold"),url("fonts/thmanyah/thmanyahserifdisplay-Bold.woff2") format("woff2");font-weight:700 800;font-display:swap}
+@font-face{font-family:"Thmanyah Serif Display";src:local("Thmanyah Serif Display Black"),url("fonts/thmanyah/thmanyahserifdisplay-Black.woff2") format("woff2");font-weight:900;font-display:swap}
+
+html[lang="ar"]{
+  --ar-sans:"Thmanyah Sans","IBM Plex Sans Arabic",Tahoma,sans-serif;
+  --ar-display:"Thmanyah Serif Display","Noto Naskh Arabic","Thmanyah Sans",serif;
+  --fb:var(--ar-sans);--fd:var(--ar-display)}
+
+/* One text family for everything (project posters keep their own brand lettering) */
+html[lang="ar"] body,
+html[lang="ar"] :is(button,input,select,textarea,p,li,a,span,b,strong,small,label,div,h4,h5,h6):not([class*="poster"] *){font-family:var(--ar-sans)}
+
+/* One display family for the big headings */
+html[lang="ar"] :is(h1,h2,.title,.intro-title,.big,.quote,.modal h3,.epic-image-copy strong):not([class*="poster"] *){font-family:var(--ar-display)}
+html[lang="ar"] h3:not([class*="poster"] *){font-family:var(--ar-sans);font-weight:700}
+
+/* Arabic never gets letter-spacing or forced caps */
+html[lang="ar"] body :not([class*="poster"] *){letter-spacing:0;text-transform:none}
+
+/* Rhythm: Arabic needs taller lines than Latin */
+html[lang="ar"] body{line-height:1.9}
+html[lang="ar"] :is(p,.sub,.lead){line-height:1.95}
+html[lang="ar"] :is(h1,h2,h3,.title,.big){line-height:1.4}
+html[lang="ar"] .title{font-weight:700}
+html[lang="ar"] .label{font-size:.88rem;font-weight:700}
+html[lang="ar"] :is(.hero h1,.intro-title){line-height:1.3;padding-block:.08em;font-weight:700}
+html[lang="ar"] .quote{font-size:1.15rem}
+html[lang="ar"] :is(.tags span,.experience-tags span,.epic-moments span){font-size:.8rem}
+html[lang="ar"] :is(.epic-image-badge,.epic-image-copy small,.epic-details-eyebrow,.experience-date){font-size:.8rem}
+
+/* English names inside Arabic (Python, IBM, PACOIL…) stay left-to-right without breaking the RTL flow */
+html[lang="ar"] .ltr{direction:ltr;unicode-bidi:isolate}
+html[lang="ar"] .certification-card h3{direction:ltr;text-align:right}
